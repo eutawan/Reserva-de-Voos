@@ -3,20 +3,26 @@ package Model.AbstractClass;
 import java.util.UUID;
 
 public class Passageiro {
-    public String nome;
+    public String nomeP;
     public UUID uuid;
-    public String email;
+    public String emailP;
     public Reserva[] reservas;
 
     public Passageiro(String nome, UUID uuid, String email, int qntMaxReservas){
-        this.nome = nome;
+        this.nomeP = nome;
         this.uuid = uuid;
-        this.email = email;
+        this.emailP = email;
         this.reservas = new Reserva[qntMaxReservas];
     }
     public void exibirInfo(){
-        System.out.println("Nome do passageiro: " + nome);
+        System.out.println("Nome do passageiro: " + nomeP);
         System.out.println("ID do passageiro: " + uuid);
-        System.out.println("Email do passageiro: " + email);
+        System.out.println("Email do passageiro: " + emailP);
+    }
+
+    public void autenticar(String nome, String email){
+        if (nomeP != nome && emailP != email){
+            throw new AutenticarPassageiroException();
+        }
     }
 }

@@ -11,6 +11,7 @@ import Model.Voos.VooAmericaSul;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Scanner;
 import java.util.UUID;
 
 public class Main {
@@ -45,7 +46,11 @@ public class Main {
                 LocalDateTime.of(2023, 6, 7, 13, 30, 0),
                 200,
                 173
+
         );
+
+        Scanner passageiro = new Scanner(System.in);
+
         Passageiro passageiro1 = new Passageiro(
                 "Tawan",
                 UUID.randomUUID(),
@@ -58,6 +63,17 @@ public class Main {
                 "guidda123@gmail.com",
                 1
         );
+
+        System.out.println("Digite o nome do passsageiro: ");
+        passageiro.nextLine();
+
+        System.out.println("Digite o email do passsageiro: ");
+        passageiro.nextLine();
+
+        String nomeUsuario = passageiro.nextLine();
+        String emailUsuario = passageiro.nextLine();
+
+        passageiro1.autenticar(nomeUsuario, emailUsuario);
 
         passageiro1.exibirInfo();
         passageiro2.exibirInfo();
