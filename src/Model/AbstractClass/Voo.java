@@ -1,5 +1,5 @@
 package Model.AbstractClass;
-
+import Exception.AutenticarVooException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -12,9 +12,9 @@ public  abstract class Voo {
     public int capacidadePassageiros;
     public int assentosReservados;
 
-    public Voo(int numVoo, String origem, String destino, LocalDateTime dataEHoraPartida, LocalDateTime dataEHoraChegada,
+    public Voo(int numVooP, String origem, String destino, LocalDateTime dataEHoraPartida, LocalDateTime dataEHoraChegada,
                int capacidadePassageiros, int assentosReservados){
-        this.numVoo = numVoo;
+        this.numVoo = numVooP;
         this.origem = origem;
         this.destino= destino;
         this.dataEHoraPartida = dataEHoraPartida;
@@ -30,5 +30,10 @@ public  abstract class Voo {
         System.out.println("Data e hora de chegada: " + dataEHoraChegada);
         System.out.println("Capacidade de passageiros: " + capacidadePassageiros);
         System.out.println("Assentos reservados: " + assentosReservados);
+    }
+    public void autenticarVoo(int numVooP){
+        if (numVooP != numVoo){
+            throw new AutenticarVooException("ERRO: NÚMERO DE VOO INCORRETO!");
+        }
     }
 }
