@@ -1,4 +1,5 @@
 package Model.AbstractClass;
+import Exception.AutenticarPassageiroException;
 
 import java.util.UUID;
 
@@ -21,8 +22,11 @@ public class Passageiro {
     }
 
     public void autenticar(String nome, String email){
-        if (nomeP != nome && emailP != email){
-            throw new AutenticarPassageiroException();
+        if (!nome.equals(nomeP)){
+            throw new AutenticarPassageiroException("ERRO -> NOME DO PASSAGEIRO INCORRETO");
+        }
+        else if (!email.equals(emailP)) {
+            throw new AutenticarPassageiroException("ERRO: EMAIL DO PASSAGEIRO INCORRETO");
         }
     }
 }
